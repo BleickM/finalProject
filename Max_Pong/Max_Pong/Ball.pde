@@ -4,19 +4,21 @@ class Ball {
   float y;
   float w;
   float h;
-  float xspeed;
-  float yspeed;
-  float speed=1;
-  float xvelocity=.1;
+  float xspeed=3;
+  float yspeed=1;
+  float xvelocity=.5;
   float yvelocity=.01;
+  float angle=1;
 
   public Ball(float x, float y, float w, float h) {
-    xspeed=1.5;
-    yspeed=.7;
+    
     this.x=x;
     this.y=y;
     this.w=w;
     this.h=h;
+    xspeed=3;
+    //yspeed=1;
+
     
 
     
@@ -27,22 +29,12 @@ class Ball {
     fill(255, 0, 0);
     ellipse(x, y, w, h);
   }
-
   void move() {
-    x+=xspeed;
-    if(x>width || x<0){
-      xspeed*=-1;
-      xvelocity*=-1;
-    }
-    y+=yspeed;
-    xspeed+=xvelocity;
+   xspeed+=xvelocity;
     yspeed+=yvelocity;
-
-    if (x>1400-10) {
-      speed*=-1;
-    }
-
-    }
+    x+=xspeed;
+    y+=yspeed;
+  }
       float getX() {
     return x;
   }
