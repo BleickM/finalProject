@@ -1,11 +1,29 @@
+
 class Ball {
   float x;
   float y;
-  float speed=1.62;
+  float w;
+  float h;
+  float xspeed=3;
+  float yspeed=1;
+  float xvelocity=.5;
+  float yvelocity=.01;
+  float angle=1;
+  
+  public Ball(){
+    
+  }
 
-  public Ball(float x, float y) {
+  public Ball(float x, float y, float w, float h) {
+    
     this.x=x;
     this.y=y;
+    this.w=w;
+    this.h=h;
+    xspeed=3;
+    //yspeed=1;
+
+    
 
     
   }
@@ -13,21 +31,45 @@ class Ball {
 
   void display() {
     fill(255, 0, 0);
-    ellipse(x, y, 20, 20);
+    ellipse(x, y, w, h);
   }
-
   void move() {
-    x+=speed;
-
-    println(x);
-
-    if (x>1400-10) {
-      //speed*=-1;
-    }
-    for (int i=0; i<pg2.length; i++) {
-      if (x>pg2[i].getX()+100&&x<pg2[i].getX()-100&&y>pg2[i].getY()+100&&y<pg2[i].getY()-100) {
-        speed*=-1;
-      }
-    }
+   xspeed+=xvelocity;
+    yspeed+=yvelocity;
+    x+=xspeed;
+    y+=yspeed;
   }
-}
+      float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
+  }
+  float getW() {
+    return w;
+  }
+  float getH() {
+    return h;
+  }
+   float getWallSpeedX() {
+    xspeed*=-1;
+    return xspeed;
+  }
+  
+  float getWallSpeedY() {
+    yspeed=(float)(Math.random()*5)-3;
+    return yspeed;
+  }
+   float getBallSpeedX() {
+    xspeed*=-1;
+    x=x-2;
+    return xspeed;
+  }
+  
+  float getBallSpeedY() {
+    float angle=random(-PI/4, PI/4);
+    yspeed=5*sin(angle);;
+    return yspeed;
+  }
+  }
+  
