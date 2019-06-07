@@ -5,7 +5,7 @@ boolean off=false;
 
 void setup() {
   size(1400, 1000);
-  g=new Bar1(1380, 300, 20, 200);
+  g=new Bar1(1380, 300, 30, 200);
   b=new Ball(280, 130, 15, 15);
 }
 
@@ -19,7 +19,8 @@ void draw() {
   g.display();
   b.display();
   moveBar1();
-  g.Scoreboard(g.getscore());
+  b.Scoreboard(b.score);
+
 }
 void moveBar1() {
   if (on) {
@@ -27,10 +28,14 @@ void moveBar1() {
   }
 }
 void Rebound() {
-  if (b.getX()+b.getW()/2>g.getX()&&b.getY()+b.getH()>g.getY()&&b.getY()<g.getY()+g.getH()) {
+  if (b.getX()+b.getW()>g.getX()&&b.getY()+b.getH()>g.getY()&&b.getY()<g.getY()+g.getH()) {
     b.getBallSpeedX();
     b.getBallSpeedY();
     println("ping");
+    b.score++;
+  }
+   if(b.getX()>1395){
+    b.score=0;
   }
   if (b.getX()<width/2) {
     //b.getWallSpeedX();
@@ -45,6 +50,7 @@ void Rebound() {
     b.getWallSpeedY();
   }
 }
+
 void keyPressed() {
   on=true;
 }

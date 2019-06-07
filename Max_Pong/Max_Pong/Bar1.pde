@@ -1,12 +1,11 @@
 public class Bar1 {
-  float Scoreboard;
 float xspeed;
 float yspeed;
   float x;
   float y;
   float w;
   float h;
-  float score=0;
+  Ball b;
 
 
   public Bar1(float x, float y, float w, float h) {     
@@ -16,6 +15,7 @@ float yspeed;
   this.h=h;
   xspeed=2;
     yspeed=5;
+    b=new Ball();
    
   }
 
@@ -24,16 +24,7 @@ float yspeed;
     rect(x, y, w, h);
   }
 
-  void Scoreboard(float score) {
-    String score1=""+score;
-    fill(255,255,255);
-    textSize(100);
-    text(score1, 100, 100);
-  
-    println(score);
-  }  
 
-  
   void move() {
       if (keyCode==UP){ 
         y-=yspeed;
@@ -43,11 +34,11 @@ float yspeed;
       }
   }
     void checkBounds(){
-    if(y>900){
-      y=900;
+    if(y>1000){
+      y=700;
     }
     if(y<0){
-      y=0;
+      y=400;
     }
   }
     float getX(){
@@ -62,8 +53,5 @@ float yspeed;
   }
   float getH(){
     return h;
-  }
-  float getscore(){
-    return score;
   }
 }
